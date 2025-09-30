@@ -16,7 +16,8 @@ export class LoginPage implements OnInit {
     { username: 'Kenny', password: '160423002' },
     { username: 'Lapod', password: '160423232' },
     { username: 'Darren', password: '160423233' },
-    { username: 'Hansen', password: '160423131' }
+    { username: 'Hansen', password: '160423131' },
+    { username: 'Polad', password: '160423123' },
   ];
 
   loginSuccess: boolean = false;
