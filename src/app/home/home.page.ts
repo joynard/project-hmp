@@ -13,6 +13,6 @@ export class HomePage {
   constructor(private router: Router) {}
 
   goToCariBerita() {
-    this.router.navigate(['/cari-berita']);
+    this.router.navigate(['tabs/cari-berita']);
   }
 }
