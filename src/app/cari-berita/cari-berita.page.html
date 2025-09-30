@@ -6,6 +6,15 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder="Cari berita..."
+      [(ngModel)]="query"
+      (ionChange)="simpanRiwayat()">
+    </ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -14,4 +23,12 @@
       <ion-title size="large">cariBerita</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <!-- Daftar riwayat pencarian -->
+  <ion-list *ngIf="riwayat.length > 0">
+    <ion-list-header>Riwayat Pencarian</ion-list-header>
+    <ion-item *ngFor="let item of riwayat" (click)="pilihRiwayat(item)">
+      {{ item }}
+    </ion-item>
+  </ion-list>
 </ion-content>
