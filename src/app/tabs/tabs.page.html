@@ -27,6 +27,11 @@
         <ion-label>Read News</ion-label>
       </ion-item>
 
+      <ion-item routerLink="/tabs/profile">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>Profile</ion-label>
+      </ion-item>
+
       <ion-item routerLink="/login">
         <ion-icon name="log-out-outline" slot="start"></ion-icon>
         <ion-label>Log Out</ion-label>
@@ -51,6 +56,11 @@
     <ion-tab-button tab="my-favorite">
       <ion-icon name="bookmarks-outline"></ion-icon>
       <ion-label>My Favorite</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Profile</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
