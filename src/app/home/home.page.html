@@ -6,6 +6,14 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder="Cari berita..."
+      (ionFocus)="goToCariBerita()">
+    </ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">

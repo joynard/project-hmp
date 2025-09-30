@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'cari-berita',
+    loadChildren: () => import('./cari-berita/cari-berita.module').then(m => m.CariBeritaPageModule)
   }
 ];
 
