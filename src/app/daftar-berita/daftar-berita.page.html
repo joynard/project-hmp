@@ -3,11 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-<<<<<<< Updated upstream
     <ion-title>News List</ion-title>
-=======
-    <ion-title>Berita: {{ kategoriId | titlecase }}</ion-title>
->>>>>>> Stashed changes
   </ion-toolbar>
 </ion-header>
 
@@ -19,7 +15,8 @@
   </ion-header>
   
   <ion-card *ngFor="let berita of beritaList" (click)="goToDetail(berita.id)">
-    <img [src]="berita.image" alt="{{berita.title}}" />
+    
+    <ion-img [src]="berita.image" [alt]="berita.title"></ion-img>
 
     <ion-card-header>
       <ion-card-title>{{ berita.title }}</ion-card-title>
