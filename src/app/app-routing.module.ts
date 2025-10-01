@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cari-berita',
     loadChildren: () => import('./cari-berita/cari-berita.module').then(m => m.CariBeritaPageModule)
+  },
+  {
+    path: 'baca-berita',
+    loadChildren: () => import('./baca-berita/baca-berita.module').then( m => m.BacaBeritaPageModule)
   }
 ];
 

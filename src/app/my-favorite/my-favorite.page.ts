@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NewsService, Berita } from '../services/data.berita';
 
 @Component({
   selector: 'app-my-favorite',
@@ -6,11 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-favorite.page.scss'],
   standalone:false,
 })
-export class MyFavoritePage implements OnInit {
+export class MyFavoritePage {
+  favoriteNews: Berita[] = [];
 
-  constructor() { }
+  constructor(
+    private newsService: NewsService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  // Gunakan ionViewWillEnter agar daftar favorit selalu update setiap kali halaman dibuka
+  ionViewWillEnter() {
+    this.loadFavorites();
   }
 
+  loadFavorites() {
+    this.favoriteNews = this.newsService.getBeritaList().filter(b => b.isFavorite);
+  }
+
+  // Gunakan metode navigasi yang sama dengan halaman daftar-berita
+  goToDetail(id: string) {
+    this.router.navigate(['/baca-berita'], { state: { beritaId: id } });
+  }
 }

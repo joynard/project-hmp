@@ -1,30 +1,53 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NewsService, Berita } from '../services/data.berita';
 
 @Component({
   selector: 'app-cari-berita',
   templateUrl: './cari-berita.page.html',
   styleUrls: ['./cari-berita.page.scss'],
-  standalone:false,
+  standalone: false,
 })
 export class CariBeritaPage implements OnInit {
-  query: string = '';
-  riwayat: string[] = [];
+  searchQuery: string = '';
+  allNews: Berita[] = [];
+  filteredNews: Berita[] = [];
+  hasSearched: boolean = false; // Untuk melacak apakah pencarian sudah dilakukan
 
-  constructor() { }
+  constructor(
+    private newsService: NewsService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    // Ambil semua data berita sekali saja saat halaman dimuat
+    this.allNews = this.newsService.getBeritaList();
+    this.filteredNews = []; 
   }
 
-  simpanRiwayat() {
-    if (this.query && !this.riwayat.includes(this.query)) {
-      this.riwayat.unshift(this.query); // simpan query terbaru di paling atas
+  /**
+   * Fungsi ini dipanggil setiap kali pengguna mengetik di search bar.
+   */
+  handleSearch(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.searchQuery = query;
+    this.hasSearched = true; // Tandai bahwa pencarian telah dimulai
+
+    if (query && query.trim() !== '') {
+      // Filter daftar berita berdasarkan judul yang cocok dengan query
+      this.filteredNews = this.allNews.filter((berita) => {
+        return berita.title.toLowerCase().includes(query);
+      });
+    } else {
+      // Jika search bar kosong, kosongkan juga hasilnya
+      this.filteredNews = [];
     }
   }
 
-  pilihRiwayat(item: string) {
-    this.query = item;
-    // kalau mau langsung jalankan pencarian berita bisa tambahkan logika di sini
+  /**
+   * Navigasi ke halaman detail berita.
+   */
+  goToDetail(id: string) {
+    this.router.navigate(['/baca-berita'], { state: { beritaId: id } });
   }
-
-
 }

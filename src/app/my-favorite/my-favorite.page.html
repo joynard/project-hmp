@@ -1,17 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>My Favorite</ion-title>
-    <!--Buat Menu -->
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title>Favorit Saya</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">myFavorite</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div *ngIf="favoriteNews.length === 0" class="ion-text-center ion-padding empty-state">
+    <ion-icon name="heart-dislike-outline" class="empty-icon"></ion-icon>
+    <h3>Belum Ada Favorit</h3>
+    <p>Tekan ikon hati pada berita untuk menambahkannya ke sini.</p>
+  </div>
+
+  <!-- Daftar Berita Favorit -->
+  <ion-card *ngFor="let berita of favoriteNews" (click)="goToDetail(berita.id)" button="true">
+    <!-- Gambar berita dengan tinggi yang dibatasi -->
+    <ion-img [src]="berita.image" class="favorite-card-image"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{ berita.title }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <!-- Style untuk halaman favorit -->
+  <style>
+    .favorite-card-image {
+      height: 200px; /* Atur tinggi gambar yang diinginkan */
+      width: 100%;
+      object-fit: cover; /* Pastikan gambar terpotong dengan rapi, bukan penyet */
+    }
+
+    .empty-state {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+    }
+    .empty-icon {
+      font-size: 5em;
+      margin-bottom: 16px;
+      color: var(--ion-color-medium);
+    }
+  </style>
 </ion-content>
+

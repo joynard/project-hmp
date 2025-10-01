@@ -1,34 +1,67 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Search News</ion-title>
-    <!--Buat Menu -->
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title>Cari Berita</ion-title>
   </ion-toolbar>
-
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <!-- Searchbar untuk input pengguna -->
     <ion-searchbar
-      placeholder="Cari berita..."
-      [(ngModel)]="query"
-      (ionChange)="simpanRiwayat()">
+      placeholder="Ketik judul berita..."
+      [value]="searchQuery"
+      (ionInput)="handleSearch($event)"
+      animated="true"
+      show-clear-button="always"
+      debounce="500">
     </ion-searchbar>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">cariBerita</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <!-- Pesan Awal Sebelum Pencarian -->
+  <div *ngIf="!hasSearched" class="ion-text-center ion-padding empty-state">
+    <ion-icon name="search-circle-outline" class="empty-icon"></ion-icon>
+    <h3>Mulai Mencari</h3>
+    <p>Ketik judul berita yang ingin Anda temukan di kolom pencarian di atas.</p>
+  </div>
 
-  <!-- Daftar riwayat pencarian -->
-  <ion-list *ngIf="riwayat.length > 0">
-    <ion-list-header>Riwayat Pencarian</ion-list-header>
-    <ion-item *ngFor="let item of riwayat" (click)="pilihRiwayat(item)">
-      {{ item }}
+  <!-- Daftar Hasil Pencarian -->
+  <ion-list *ngIf="hasSearched && filteredNews.length > 0">
+    <ion-item *ngFor="let berita of filteredNews" (click)="goToDetail(berita.id)" button="true" detail="true">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="berita.image"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ berita.title }}</h2>
+        <p>{{ berita.kategori.join(', ') | titlecase }}</p>
+      </ion-label>
     </ion-item>
   </ion-list>
+
+  <!-- Pesan Jika Tidak Ada Hasil -->
+  <div *ngIf="hasSearched && filteredNews.length === 0 && searchQuery.length > 0" class="ion-text-center ion-padding empty-state">
+    <ion-icon name="sad-outline" class="empty-icon"></ion-icon>
+    <h3>Tidak Ditemukan</h3>
+    <p>Tidak ada berita yang cocok dengan kata kunci "{{ searchQuery }}".</p>
+  </div>
+  
+  <!-- Style untuk pesan agar lebih menarik -->
+  <style>
+    .empty-state {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+    }
+    .empty-icon {
+      font-size: 5em;
+      margin-bottom: 16px;
+      color: #ccc;
+    }
+  </style>
+
 </ion-content>

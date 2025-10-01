@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+// 1. Import AuthService
+import { AuthService } from '../services/auten.pengguna';
 
 @Component({
   selector: 'app-login',
@@ -12,30 +14,24 @@ export class LoginPage implements OnInit {
   username: string = '';
   password: string = '';
 
-  users = [
-    { username: 'Kenny', password: '160423002' },
-    { username: 'Lapod', password: '160423232' },
-    { username: 'Darren', password: '160423233' },
-    { username: 'Hansen', password: '160423131' }
-  ];
+  // Hapus array 'users' dan 'loginSuccess' dari sini
 
-  loginSuccess: boolean = false;
-  constructor(private router: Router) {}
+  // 2. Inject AuthService di constructor
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
   }
 
   login() {
-    for (let i = 0; i < this.users.length; i++) {
-      if (
-        this.username === this.users[i].username &&
-        this.password === this.users[i].password
-      ) {
-        this.loginSuccess = true;
-        this.router.navigate(['/tabs/home']);
-        return;
-      }
+    // 3. Gunakan AuthService untuk memvalidasi login
+    const loginSuccess = this.authService.login(this.username, this.password);
+
+    if (loginSuccess) {
+      // Jika berhasil, arahkan ke home
+      this.router.navigate(['/tabs/home']);
+    } else {
+      // Jika gagal, tampilkan pesan error
+      alert('Username atau Password salah!');
     }
-    alert('Username atau Password salah!');
   }
 }

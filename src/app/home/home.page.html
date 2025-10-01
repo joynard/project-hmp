@@ -1,38 +1,124 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-    <!--Buat Menu -->
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title>
+      Beranda
+    </ion-title>
   </ion-toolbar>
-
-  <ion-toolbar>
-    <ion-searchbar
-      placeholder="Cari berita..."
-      (ionFocus)="goToCariBerita()">
-    </ion-searchbar>
-  </ion-toolbar>
-
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
-      >
-    </p>
+  <div class="ion-padding-horizontal ion-padding-top welcome-section">
+    <h1 *ngIf="currentUser">Selamat Datang, {{ currentUser.username }}!</h1>
+    <p>Lihat berita terbaru hari ini.</p>
   </div>
+  
+  <!-- Search Bar -->
+  <ion-searchbar
+    placeholder="Cari berita..."
+    (ionFocus)="goToCariBerita()"
+    class="ion-padding-horizontal">
+  </ion-searchbar>
+  
+  <!-- Berita Utama / Featured News Slider -->
+  <div class="ion-padding-top">
+    <ion-list-header>
+      <ion-label color="dark"><h2>Berita Utama</h2></ion-label>
+    </ion-list-header>
+    <swiper-container [slidesPerView]="1.2" [spaceBetween]="15" [centeredSlides]="true" [loop]="true" [autoplay]="true">
+      <swiper-slide *ngFor="let berita of featuredNews" (click)="goToDetail(berita.id)">
+        <div class="featured-card">
+          <ion-img [src]="berita.image"></ion-img>
+          <div class="featured-card-overlay">
+            <h3>{{ berita.title }}</h3>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  
+  <!-- Berita Terbaru -->
+  <div class="ion-padding-top">
+    <ion-list-header>
+      <ion-label color="dark"><h2>Berita Terbaru</h2></ion-label>
+    </ion-list-header>
+    <ion-list class="ion-no-padding">
+      <ion-item *ngFor="let berita of latestNews" (click)="goToDetail(berita.id)" button="true" lines="full">
+        <ion-thumbnail slot="start">
+          <ion-img [src]="berita.image"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{ berita.title }}</h3>
+          <p>{{ berita.kategori.join(', ') | titlecase }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <style>
+    .welcome-section h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ion-color-primary-shade);
+      margin-bottom: 0.2rem;
+    }
+
+    .welcome-section p {
+      color: var(--ion-color-medium-shade);
+    }
+
+    .featured-card {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .featured-card ion-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .featured-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+      padding: 24px 12px 12px 12px;
+    }
+
+    .featured-card-overlay h3 {
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    ion-thumbnail {
+      --size: 70px;
+      --border-radius: 8px;
+    }
+
+    ion-item h3 {
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: normal;
+    }
+
+    ion-item p {
+      font-size: 0.8rem;
+      color: var(--ion-color-medium-shade);
+    }
+  </style>
 </ion-content>

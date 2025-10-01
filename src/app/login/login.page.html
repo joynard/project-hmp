@@ -1,30 +1,89 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Apa Namanya Apps</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Ganti seluruh isi file login.page.html dengan kode ini -->
+<ion-content [fullscreen]="true">
+  <!-- Latar Belakang Gradien -->
+  <div class="background-gradient"></div>
+  
+  <div class="login-container">
+    <ion-card class="login-card">
+      <ion-card-header class="ion-text-center">
+        <!-- Ikon Logo -->
+        <ion-icon name="newspaper-outline" class="logo-icon"></ion-icon>
+        <!-- Judul Aplikasi -->
+        <ion-card-title>Portal Apa Namanya News Apps</ion-card-title>
+        <ion-card-subtitle>Login to continue</ion-card-subtitle>
+      </ion-card-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+      <ion-card-content>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <!-- Input Username dengan Ikon -->
+          <ion-item>
+            <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+            <ion-input label="Username" label-placement="floating" type="text" [(ngModel)]="username"></ion-input>
+          </ion-item>
 
+          <!-- Input Password dengan Ikon -->
+          <ion-item>
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-input label="Password" label-placement="floating" type="password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+        </ion-list>
 
-  <h2 class="ion-text-center">Login</h2>
+        <!-- Tombol Login -->
+        <ion-button expand="block" (click)="login()" class="ion-margin-top" color="primary">
+          LOGIN
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
+  <!-- Style untuk halaman login yang baru -->
+  <style>
+    .background-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+      z-index: -1;
+    }
 
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input>
-    </ion-item>
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 16px;
+    }
 
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password"[(ngModel)]="password"></ion-input>
-    </ion-item>
-  </ion-list>
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      --background: rgba(250, 246, 240, 0.9); /* Sedikit lebih transparan */
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo-icon {
+      font-size: 4rem;
+      color: var(--ion-color-primary);
+    }
 
+    /* --- PERBAIKAN WARNA JUDUL --- */
+    .login-card ion-card-title {
+      color: var(--ion-text-color); /* Menggunakan warna teks utama yang gelap */
+      font-weight: 600;
+      margin-top: 8px;
+    }
 
-  <ion-button expand="block" color="success"(click)="login()">
-    Login
-  </ion-button>
+    .login-card ion-card-subtitle {
+      color: var(--ion-color-medium-shade); /* Menggunakan warna medium yang lebih gelap */
+    }
 
+    ion-item {
+      --background: transparent;
+    }
+  </style>
 </ion-content>
+
