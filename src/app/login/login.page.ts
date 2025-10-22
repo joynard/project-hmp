@@ -14,16 +14,13 @@ export class LoginPage implements OnInit {
   username: string = '';
   password: string = '';
 
-  // Hapus array 'users' dan 'loginSuccess' dari sini
-
-  // 2. Inject AuthService di constructor
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
   }
 
   login() {
-    // 3. Gunakan AuthService untuk memvalidasi login
+    // Gunakan AuthService untuk login
     const loginSuccess = this.authService.login(this.username, this.password);
 
     if (loginSuccess) {

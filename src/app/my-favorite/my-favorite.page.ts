@@ -16,7 +16,7 @@ export class MyFavoritePage {
     private router: Router
   ) {}
 
-  // Gunakan ionViewWillEnter agar daftar favorit selalu update setiap kali halaman dibuka
+  // ionViewWillEnter diterapkan agar daftar favorit selalu refresh tiap kali halaman dibuka
   ionViewWillEnter() {
     this.loadFavorites();
   }
@@ -25,7 +25,6 @@ export class MyFavoritePage {
     this.favoriteNews = this.newsService.getBeritaList().filter(b => b.isFavorite);
   }
 
-  // Gunakan metode navigasi yang sama dengan halaman daftar-berita
   goToDetail(id: string) {
     this.router.navigate(['/baca-berita'], { state: { beritaId: id } });
   }

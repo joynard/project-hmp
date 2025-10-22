@@ -296,7 +296,7 @@ export class NewsService {
       berita.count++;
       return berita;
     }
-
+    
     return undefined;
   }
 }

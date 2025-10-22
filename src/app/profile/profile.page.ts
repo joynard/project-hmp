@@ -46,7 +46,7 @@ export class ProfilePage {
 
     if (success) {
       this.presentAlert('Sukses', 'Password Anda berhasil diubah.');
-      // Kosongkan field setelah berhasil
+      // Empty field setelah berhasil
       this.oldPassword = '';
       this.newPassword = '';
       this.confirmPassword = '';

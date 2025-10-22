@@ -14,6 +14,6 @@ import { HomePageRoutingModule } from './home-routing.module';
     HomePageRoutingModule
   ],
   declarations: [HomePage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Tambahkan ini untuk Swiper
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Untuk Swiper
 })
 export class HomePageModule {}

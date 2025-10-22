@@ -11,11 +11,9 @@ import { NewsService, Berita } from '../services/data.berita';
 })
 export class DaftarBeritaPage implements OnInit {
   kategoriId: string = '';
-  beritaList: Berita[] = []; // Gunakan tipe data Berita
+  beritaList: Berita[] = []; 
 
-  // HAPUS array 'semuaBerita' dari sini
-
-  // 2. Inject NewsService di constructor
+  // Inject NewsService di constructor
   constructor(
     private router: Router, 
     private route: ActivatedRoute,
@@ -28,7 +26,7 @@ export class DaftarBeritaPage implements OnInit {
   }
 
   filterBerita() {
-    // 3. Ambil data dari service, bukan dari variabel lokal
+    // Ambil data dari service dan filter berdasarkan kategori
     const semuaBerita = this.newsService.getBeritaList();
 
     if (this.kategoriId) {
@@ -47,7 +45,6 @@ export class DaftarBeritaPage implements OnInit {
     return avg.toFixed(1);
   }
 
-  // Fungsi ini sudah benar, tidak perlu diubah.
   goToDetail(id: string) {
     this.router.navigate(['/baca-berita'], { state: { beritaId: id } });
   }

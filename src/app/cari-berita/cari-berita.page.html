@@ -20,14 +20,14 @@
 
 <ion-content [fullscreen]="true">
   
-  <!-- Pesan Awal Sebelum Pencarian -->
+  <!-- Hint Sebelum Search -->
   <div *ngIf="!hasSearched" class="ion-text-center ion-padding empty-state">
     <ion-icon name="search-circle-outline" class="empty-icon"></ion-icon>
     <h3>Mulai Mencari</h3>
     <p>Ketik judul berita yang ingin Anda temukan di kolom pencarian di atas.</p>
   </div>
 
-  <!-- Daftar Hasil Pencarian -->
+  <!-- List Hasil Pencarian -->
   <ion-list *ngIf="hasSearched && filteredNews.length > 0">
     <ion-item *ngFor="let berita of filteredNews" (click)="goToDetail(berita.id)" button="true" detail="true">
       <ion-thumbnail slot="start">
@@ -40,14 +40,14 @@
     </ion-item>
   </ion-list>
 
-  <!-- Pesan Jika Tidak Ada Hasil -->
+  <!-- Message saat hasil tidak cocok dgn keyword -->
   <div *ngIf="hasSearched && filteredNews.length === 0 && searchQuery.length > 0" class="ion-text-center ion-padding empty-state">
     <ion-icon name="sad-outline" class="empty-icon"></ion-icon>
     <h3>Tidak Ditemukan</h3>
     <p>Tidak ada berita yang cocok dengan kata kunci "{{ searchQuery }}".</p>
   </div>
   
-  <!-- Style untuk pesan agar lebih menarik -->
+  <!-- Style -->
   <style>
     .empty-state {
       height: 60vh;

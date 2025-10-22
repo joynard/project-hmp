@@ -18,7 +18,7 @@
 
 <ion-content>
   <div *ngIf="berita">
-    <!-- 1. Tambahkan atribut 'navigation' dan 'pagination' untuk kontrol slider -->
+    <!-- Atribut navigation dan pagination untuk kontrol slider -->
     <swiper-container [pagination]="true" [loop]="true">
       <swiper-slide *ngFor="let img of berita.images">
         <ion-img [src]="img"></ion-img>
@@ -41,7 +41,7 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Bagian Rating -->
+    <!-- Rating -->
     <ion-item-divider>
       <ion-label>Beri Rating</ion-label>
     </ion-item-divider>
@@ -56,7 +56,7 @@
       </ion-icon>
     </div>
 
-    <!-- Bagian Komentar (kode tidak berubah) -->
+    <!-- Komentar -->
     <ion-list>
       <ion-list-header>
         <ion-label>Komentar ({{ berita.comments.length }})</ion-label>
@@ -84,7 +84,7 @@
     </ion-list>
   </div>
 
-  <!-- Style (kode tidak berubah) -->
+  <!-- Style -->
   <style>
     swiper-container { width: 100%; height: 250px; }
     swiper-slide ion-img { width: 100%; height: 100%; object-fit: cover; }

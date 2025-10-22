@@ -16,7 +16,6 @@
   
   <ion-card *ngFor="let berita of beritaList" (click)="goToDetail(berita.id)" button="true">
     
-    <!-- TAMBAHKAN BARIS INI UNTUK MENAMPILKAN GAMBAR -->
     <ion-img [src]="berita.image" [alt]="berita.title"></ion-img>
 
     <ion-card-header>

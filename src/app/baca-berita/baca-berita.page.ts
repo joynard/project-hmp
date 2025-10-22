@@ -4,7 +4,6 @@ import { AlertController } from '@ionic/angular';
 import { NewsService, Berita, Comment } from '../services/data.berita';
 import { AuthService } from '../services/auten.pengguna';
 
-// 1. Pastikan import ini ada dan dipanggil
 import { register } from 'swiper/element/bundle';
 register();
 
@@ -58,7 +57,6 @@ export class BacaBeritaPage implements OnInit {
     }
   }
   
-  // Fungsi lain tidak berubah
   toggleFavorite() {
     if (this.berita) {
       this.berita.isFavorite = !this.berita.isFavorite;
@@ -88,8 +86,6 @@ export class BacaBeritaPage implements OnInit {
 
     await alert.present();
   }
-
-
 
   addComment() {
     const currentUser = this.authService.getCurrentUser();

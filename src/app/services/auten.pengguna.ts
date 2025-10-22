@@ -45,11 +45,11 @@ export class AuthService {
       return false; // Tidak ada user yang login
     }
 
-    // Cari user di database utama berdasarkan username yang login
+    // Cari user berdasarkan username yang login
     const usersData = this.users.find(u => u.username === this.currentUser?.username);
 
     if (usersData && usersData.password === oldPassword) {
-      // Update password di database utama
+      // Update password di data user
       usersData.password = newPassword;
       // Update juga password di sesi yang sedang berjalan
       if(this.currentUser) {

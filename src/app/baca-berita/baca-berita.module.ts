@@ -13,7 +13,7 @@ import { BacaBeritaPage } from './baca-berita.page';
     BacaBeritaPageRoutingModule,
   ],
   declarations: [BacaBeritaPage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // 2. Pastikan schemas ini ada
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class BacaBeritaPageModule {}
 

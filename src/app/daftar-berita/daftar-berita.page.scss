@@ -1,11 +1,6 @@
-// Tambahkan kode ini di file: daftar-berita.page.scss
-
 ion-card {
   ion-img {
-    // Batasi tinggi gambar maksimal 150px
     max-height: 150px;
-    
-    // Pastikan gambar mengisi area tanpa merusak rasio
     object-fit: cover; 
   }
 }

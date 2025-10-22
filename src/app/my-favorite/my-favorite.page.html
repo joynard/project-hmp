@@ -16,19 +16,18 @@
 
   <!-- Daftar Berita Favorit -->
   <ion-card *ngFor="let berita of favoriteNews" (click)="goToDetail(berita.id)" button="true">
-    <!-- Gambar berita dengan tinggi yang dibatasi -->
     <ion-img [src]="berita.image" class="favorite-card-image"></ion-img>
     <ion-card-header>
       <ion-card-title>{{ berita.title }}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
-  <!-- Style untuk halaman favorit -->
+  <!-- Style -->
   <style>
     .favorite-card-image {
-      height: 200px; /* Atur tinggi gambar yang diinginkan */
+      height: 200px; 
       width: 100%;
-      object-fit: cover; /* Pastikan gambar terpotong dengan rapi, bukan penyet */
+      object-fit: cover; /* Agar gambar memenuhi area tanpa merusak rasio aspek */
     }
 
     .empty-state {

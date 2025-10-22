@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class KategoriPage implements OnInit {
 
-  // Tambahkan ikon Ionic untuk tiap kategori
+  // Add icon ionic untuk tiap kategori
   categories = [
     { id: 'economy', name: 'Ekonomi', icon: 'cash-outline' },
     { id: 'sports', name: 'Olah Raga', icon: 'football-outline' },
