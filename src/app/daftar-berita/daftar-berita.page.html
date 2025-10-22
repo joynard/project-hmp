@@ -20,13 +20,13 @@
     <ion-img [src]="berita.image" [alt]="berita.title"></ion-img>
 
     <ion-card-header>
-      <ion-card-title>{{ berita.title }}</ion-card-title>
+      <ion-card-title style="font-weight: bold;">{{ berita.title }}</ion-card-title>
       <ion-card-subtitle>
         ⭐ {{ getAverageRating(berita.rating) }}
       </ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content style="font-weight: bold;">
       Klik untuk membaca berita selengkapnya...
     </ion-card-content>
   </ion-card>
