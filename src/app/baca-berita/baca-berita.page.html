@@ -38,7 +38,7 @@
     <ion-item-divider><ion-label>Beri Rating</ion-label></ion-item-divider>
     <div class="ion-text-center ion-padding">
       <ion-button fill="clear" *ngFor="let i of [1,2,3,4,5]" (click)="addRating(i)">
-        <ion-icon size="large" name="star-outline"></ion-icon>
+        <ion-icon size="large" [name]="i <= currentRating ? 'star' : 'star-outline'"></ion-icon>
       </ion-button>
     </div>
 

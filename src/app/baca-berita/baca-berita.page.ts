@@ -18,6 +18,7 @@ export class BacaBeritaPage implements OnInit {
   berita: Berita | undefined;
   newCommentText: string = '';
   replyText: string = '';
+  currentRating: number = 0;
 
   constructor(
     private router: Router,
@@ -61,6 +62,7 @@ export class BacaBeritaPage implements OnInit {
   async addRating(rating: number) {
     if (this.berita) {
       this.berita.rating.push(rating);
+      this.currentRating = rating;
       const alert = await this.alertController.create({
         header: 'Terima Kasih!',
         message: `Anda memberikan rating ${rating} bintang.`,
