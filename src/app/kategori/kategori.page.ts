@@ -9,25 +9,21 @@ import { Router } from '@angular/router';
 })
 export class KategoriPage implements OnInit {
 
-  // Perbarui array ini untuk mencocokkan semua kategori yang ada di news.service.ts
+  // Tambahkan ikon Ionic untuk tiap kategori
   categories = [
-    { id: 'economy', name: 'Ekonomi' },
-    { id: 'sports', name: 'Olah Raga' },
-    { id: 'tech', name: 'Teknologi' },
-    { id: 'health', name: 'Kesehatan' },
-    { id: 'lifestyle', name: 'Gaya Hidup' },
+    { id: 'economy', name: 'Ekonomi', icon: 'cash-outline' },
+    { id: 'sports', name: 'Olah Raga', icon: 'football-outline' },
+    { id: 'tech', name: 'Teknologi', icon: 'laptop-outline' },
+    { id: 'health', name: 'Kesehatan', icon: 'heart-outline' },
+    { id: 'lifestyle', name: 'Gaya Hidup', icon: 'color-palette-outline' },
   ];
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  // Fungsi ini sudah benar dan tidak perlu diubah
   goToCategory(categoryId: string) {
-    // Navigasi ke URL yang benar, dengan '/tabs/' di depannya
     this.router.navigate(['/tabs/daftar-berita', categoryId]);
   }
 
 }
-
