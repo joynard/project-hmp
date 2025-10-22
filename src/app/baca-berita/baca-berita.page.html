@@ -42,11 +42,18 @@
     </ion-card>
 
     <!-- Bagian Rating -->
-    <ion-item-divider><ion-label>Beri Rating</ion-label></ion-item-divider>
+    <ion-item-divider>
+      <ion-label>Beri Rating</ion-label>
+    </ion-item-divider>
+
     <div class="ion-text-center ion-padding">
-      <ion-button fill="clear" *ngFor="let i of [1,2,3,4,5]" (click)="addRating(i)">
-        <ion-icon size="large" [name]="i <= currentRating ? 'star' : 'star-outline'"></ion-icon>
-      </ion-button>
+      <ion-icon
+        size="large"
+        *ngFor="let i of [1,2,3,4,5]"
+        [name]="i <= currentRating ? 'star' : 'star-outline'"
+        (click)="addRating(i)"
+        style="padding: 6px; cursor: pointer;">
+      </ion-icon>
     </div>
 
     <!-- Bagian Komentar (kode tidak berubah) -->

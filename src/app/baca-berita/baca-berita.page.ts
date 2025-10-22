@@ -36,6 +36,12 @@ export class BacaBeritaPage implements OnInit {
   ngOnInit() {
     if (!this.berita) {
       this.router.navigate(['/tabs/home']);
+    } else {
+      const currentUser = this.authService.getCurrentUser();
+      const userRating = this.berita.rating.find(
+        r => currentUser && r.user === currentUser.username
+      );
+      this.currentRating = userRating ? userRating.value : 0;
     }
   }
 
@@ -60,17 +66,36 @@ export class BacaBeritaPage implements OnInit {
   }
 
   async addRating(rating: number) {
-    if (this.berita) {
-      this.berita.rating.push(rating);
-      this.currentRating = rating;
-      const alert = await this.alertController.create({
-        header: 'Terima Kasih!',
-        message: `Anda memberikan rating ${rating} bintang.`,
-        buttons: ['OK'],
-      });
-      await alert.present();
-    }
+    const currentUser = this.authService.getCurrentUser();
+    if (!this.berita || !currentUser) return;
+    const existingRating = this.berita.rating.find(
+      r => r.user === currentUser.username
+    );
+
+    if (existingRating) {
+      existingRating.value = rating;
+    } else {
+      this.berita.rating.push({
+        user: currentUser.username,
+        value: rating});
+    
   }
+  
+
+  // Update bintang yang aktif di UI
+  this.currentRating = rating;
+
+  // ✅ Tampilkan alert pemberitahuan
+  const alert = await this.alertController.create({
+    header: 'Terima Kasih!',
+    message: `Rating Anda sekarang ${rating} bintang.`,
+    buttons: ['OK'],
+  });
+
+  await alert.present();
+}
+
+
 
   addComment() {
     const currentUser = this.authService.getCurrentUser();

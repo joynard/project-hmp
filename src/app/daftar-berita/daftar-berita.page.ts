@@ -38,9 +38,12 @@ export class DaftarBeritaPage implements OnInit {
     }
   }
 
-  getAverageRating(ratingArr: number[]): string {
+  getAverageRating(ratingArr: { user: string; value: number }[]): string {
     if (!ratingArr || ratingArr.length === 0) return '0';
-    const avg = ratingArr.reduce((a, b) => a + b, 0) / ratingArr.length;
+
+    const total = ratingArr.reduce((sum, r) => sum + r.value, 0);
+    const avg = total / ratingArr.length;
+
     return avg.toFixed(1);
   }
 
