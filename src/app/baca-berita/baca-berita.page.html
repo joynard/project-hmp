@@ -19,7 +19,7 @@
 <ion-content>
   <div *ngIf="berita">
     <!-- 1. Tambahkan atribut 'navigation' dan 'pagination' untuk kontrol slider -->
-    <swiper-container [pagination]="true" [navigation]="true" [loop]="true">
+    <swiper-container [pagination]="true" [loop]="true">
       <swiper-slide *ngFor="let img of berita.images">
         <ion-img [src]="img"></ion-img>
       </swiper-slide>
