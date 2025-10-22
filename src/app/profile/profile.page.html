@@ -11,9 +11,9 @@
   <!-- Tampilkan konten hanya jika user sudah login -->
   <div *ngIf="currentUser" class="ion-text-center">
     
-    <!-- Avatar Pengguna (sementara) -->
+    <!-- Avatar user -->
     <ion-avatar class="profile-avatar">
-      <img alt="Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <img alt="Avatar" [src]="currentUser.avatar"/>
     </ion-avatar>
 
     <!-- Tampilkan Username -->

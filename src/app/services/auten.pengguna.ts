@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 export interface User {
   username: string;
   password?: string;
+  avatar?: string;
 }
 
 @Injectable({
@@ -13,10 +14,10 @@ export class AuthService {
   private currentUser: User | null = null;
 
   private users: User[] = [
-    { username: 'Kenny', password: '160423002' },
-    { username: 'Lapod', password: '160423232' },
-    { username: 'Darren', password: '160423233' },
-    { username: 'Hansen', password: '160423131' }
+    { username: 'Kenny', password: '160423002', avatar: "https://my.ubaya.ac.id/img/mhs/160423002_l.jpg" },
+    { username: 'Lapod', password: '160423232', avatar: "https://my.ubaya.ac.id/img/mhs/160423232_l.jpg" },
+    { username: 'Darren', password: '160423233', avatar: "https://my.ubaya.ac.id/img/mhs/160423233_l.jpg" },
+    { username: 'Hansen', password: '160423131', avatar: "https://my.ubaya.ac.id/img/mhs/160423131_l.jpg" }
   ];
 
   constructor(private router: Router) { }
