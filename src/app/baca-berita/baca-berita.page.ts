@@ -78,22 +78,16 @@ export class BacaBeritaPage implements OnInit {
       this.berita.rating.push({
         user: currentUser.username,
         value: rating});
-    
+    }
+    this.currentRating = rating;
+    const alert = await this.alertController.create({
+      header: 'Terima Kasih!',
+      message: `Rating Anda sekarang ${rating} bintang.`,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
-  
-
-  // Update bintang yang aktif di UI
-  this.currentRating = rating;
-
-  // ✅ Tampilkan alert pemberitahuan
-  const alert = await this.alertController.create({
-    header: 'Terima Kasih!',
-    message: `Rating Anda sekarang ${rating} bintang.`,
-    buttons: ['OK'],
-  });
-
-  await alert.present();
-}
 
 
 
