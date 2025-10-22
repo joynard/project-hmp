@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'baca-berita',
     loadChildren: () => import('./baca-berita/baca-berita.module').then( m => m.BacaBeritaPageModule)
+  },  {
+    path: 'themes',
+    loadChildren: () => import('./themes/themes.module').then( m => m.ThemesPageModule)
   }
+
 ];
 
 @NgModule({

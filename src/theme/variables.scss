@@ -4,6 +4,7 @@
    https://ionicframework.com/docs/theming/theming-overview */
 
 :root {
+  color-scheme: light;
   /** background **/
   --ion-background-color: #faf6f0;
   --ion-background-color-rgb: 250,246,240;
@@ -83,4 +84,45 @@
   --ion-color-light-contrast-rgb: 0,0,0;
   --ion-color-light-shade: #d7d3ce;
   --ion-color-light-tint: #f5f1ec;
+}
+/* === Tema Biru Laut === */
+body.theme-blue {
+  --ion-background-color: #f0f8ff;
+  --ion-text-color: #1b2735;
+
+  --ion-color-primary: #1e88e5;
+  --ion-color-secondary: #64b5f6;
+  --ion-color-tertiary: #1565c0;
+
+  --ion-color-success: #43a047;
+  --ion-color-warning: #ffb300;
+  --ion-color-danger: #e53935;
+}
+
+/* === Tema Hijau Daun === */
+body.theme-green {
+  --ion-background-color: #f3faf4;
+  --ion-text-color: #2e3b2e;
+
+  --ion-color-primary: #2e7d32;
+  --ion-color-secondary: #66bb6a;
+  --ion-color-tertiary: #1b5e20;
+
+  --ion-color-success: #81c784;
+  --ion-color-warning: #fdd835;
+  --ion-color-danger: #e57373;
+}
+
+/* === Tema Ungu Pastel === */
+body.theme-purple {
+  --ion-background-color: #f9f6fb;
+  --ion-text-color: #3b2b44;
+
+  --ion-color-primary: #8e24aa;
+  --ion-color-secondary: #ba68c8;
+  --ion-color-tertiary: #6a1b9a;
+
+  --ion-color-success: #9ccc65;
+  --ion-color-warning: #ffb74d;
+  --ion-color-danger: #ef5350;
 }

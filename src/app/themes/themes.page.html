@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- Tombol menu biar bisa buka sidebar -->
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pilih Tema</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+ <ion-list>
+    <ion-list-header>
+      <ion-label>Ganti Warna Tema</ion-label>
+    </ion-list-header>
+
+    <ion-item button detail (click)="changeTheme('default')">
+      <ion-avatar slot="start">
+        <div class="color-circle" style="background-color: #faf6f0"></div>
+      </ion-avatar>
+      <ion-label>🌰 Default (Coklat Krem)</ion-label>
+    </ion-item>
+
+    <ion-item button detail (click)="changeTheme('blue')">
+      <ion-avatar slot="start">
+        <div class="color-circle" style="background-color: #dbeafe"></div>
+      </ion-avatar>
+      <ion-label>💙 Biru Laut</ion-label>
+    </ion-item>
+
+    <ion-item button detail (click)="changeTheme('green')">
+      <ion-avatar slot="start">
+        <div class="color-circle" style="background-color: #e6f7e6"></div>
+      </ion-avatar>
+      <ion-label>💚 Hijau Daun</ion-label>
+    </ion-item>
+
+    <ion-item button detail (click)="changeTheme('purple')">
+      <ion-avatar slot="start">
+        <div class="color-circle" style="background-color: #ede9fe"></div>
+      </ion-avatar>
+      <ion-label>💜 Ungu Pastel</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
