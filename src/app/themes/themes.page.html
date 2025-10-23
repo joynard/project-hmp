@@ -1,26 +1,41 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
 
+    <ion-buttons slot="start">
       <!-- Tombol menu biar bisa buka sidebar -->
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+
     <ion-title>Pilih Tema</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
     <ion-list>
+
+      <!-- Header di bagian atas list -->
       <ion-list-header>
+        <!-- Label tengah -->
         <ion-label class="custom-center">Ganti Warna Tema</ion-label>
       </ion-list-header>
 
+      <!-- ITEM: Tema default -->
+      <!-- button = bisa diklik, detail = panah di kanan -->
+      <!-- (click)="changeTheme('default')" → panggil fungsi di TS -->
       <ion-item button detail (click)="changeTheme('default')">
+
+        <!-- Avatar digunakan untuk menampilkan circle warna -->
         <ion-avatar slot="start">
+
+          <!-- Circle preview warna -->
           <div class="color-circle" style="background-color: #faf6f0"></div>
         </ion-avatar>
+
+         <!-- Nama tema -->
         <ion-label>🌰 Default (Coklat Krem)</ion-label>
       </ion-item>
 
+      <!-- ITEM: Tema biru -->
       <ion-item button detail (click)="changeTheme('blue')">
         <ion-avatar slot="start">
           <div class="color-circle" style="background-color: #dbeafe"></div>
@@ -28,6 +43,7 @@
         <ion-label>💙 Biru Laut</ion-label>
       </ion-item>
 
+      <!-- ITEM: Tema hijau -->
       <ion-item button detail (click)="changeTheme('green')">
         <ion-avatar slot="start">
           <div class="color-circle" style="background-color: #e6f7e6"></div>
@@ -35,6 +51,7 @@
         <ion-label>💚 Hijau Daun</ion-label>
       </ion-item>
 
+      <!-- ITEM: Tema ungu -->
       <ion-item button detail (click)="changeTheme('purple')">
         <ion-avatar slot="start">
           <div class="color-circle" style="background-color: #ede9fe"></div>

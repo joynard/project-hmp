@@ -9,7 +9,7 @@ import { NewsService, Berita } from '../services/data.berita';
   standalone:false,
 })
 export class MyFavoritePage {
-  favoriteNews: Berita[] = [];
+  favoriteNews: Berita[] = []; // Array untuk menampung list berita favorit
 
   constructor(
     private newsService: NewsService,
@@ -21,10 +21,14 @@ export class MyFavoritePage {
     this.loadFavorites();
   }
 
+  // Ambil semua berita kemudian filter yang memiliki flag isFavorite = true
+  // Ini akan mengisi favoriteNews dengan berita favorit saja
   loadFavorites() {
     this.favoriteNews = this.newsService.getBeritaList().filter(b => b.isFavorite);
   }
 
+  // Navigasi menuju halaman detail berita ketika item favorit diklik
+  // beritaId dikirim melalui state agar bisa diterima di halaman detail
   goToDetail(id: string) {
     this.router.navigate(['/baca-berita'], { state: { beritaId: id } });
   }

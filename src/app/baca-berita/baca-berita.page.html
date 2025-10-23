@@ -1,10 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary">
+
     <ion-buttons slot="start">
+       <!-- Tombol BACK ke halaman home jika ditekan -->
       <ion-back-button defaultHref="/tabs/home"></ion-back-button>
     </ion-buttons>
+
     <ion-title>{{ berita ? berita.title : 'Baca Berita' }}</ion-title>
     <ion-buttons slot="end">
+
+      <!-- Tombol favorit -->
       <ion-button (click)="toggleFavorite()">
         <ion-icon 
           slot="icon-only" 
@@ -12,22 +17,32 @@
           [color]="berita?.isFavorite ? 'danger' : 'light'">
         </ion-icon>
       </ion-button>
+
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- Hanya tampil jika data berita ada -->
   <div *ngIf="berita">
-    <!-- Atribut navigation dan pagination untuk kontrol slider -->
+
+    <!-- SLIDER GAMBAR BERITA -->
+    <!-- pagination = titik navigasi bawah -->
+    <!-- loop = muter terus -->
     <swiper-container [pagination]="true" [loop]="true">
       <swiper-slide *ngFor="let img of berita.images">
         <ion-img [src]="img"></ion-img>
       </swiper-slide>
     </swiper-container>
 
+    <!-- CARD INFORMASI BERITA -->
     <ion-card>
       <ion-card-header>
+
+        <!-- Judul berita -->
         <ion-card-title>{{ berita.title }}</ion-card-title>
+
+        <!-- Counter berapa kali berita dilihat -->
         <ion-card-subtitle class="ion-padding-top">
           <ion-icon 
             name="eye-outline" 
@@ -36,6 +51,8 @@
           Dilihat {{ berita.count }} kali
         </ion-card-subtitle>
       </ion-card-header>
+
+       <!-- Isi konten/paragraf berita -->
       <ion-card-content>
         <p>{{ berita.content }}</p>
       </ion-card-content>
@@ -46,6 +63,7 @@
       <ion-label>Beri Rating</ion-label>
     </ion-item-divider>
 
+    <!-- Bintang rating interaktif -->
     <div class="ion-text-center ion-padding">
       <ion-icon
         size="large"
@@ -59,23 +77,38 @@
     <!-- Komentar -->
     <ion-list>
       <ion-list-header>
+        <!-- Menampilkan jumlah komentar -->
         <ion-label>Komentar ({{ berita.comments.length }})</ion-label>
       </ion-list-header>
+
+      <!-- INPUT komentar baru -->
       <ion-item>
         <ion-input label="Komentar Anda" label-placement="floating" placeholder="Tulis komentar..." [(ngModel)]="newCommentText"></ion-input>
         <ion-button (click)="addComment()" slot="end">Kirim</ion-button>
       </ion-item>
+
+      <!-- LIST komentar -->
       <div *ngFor="let comment of berita.comments">
+
+        <!-- Item komentar utama -->
         <ion-item lines="full">
           <ion-label><h3>{{ comment.user }}</h3><p>{{ comment.text }}</p></ion-label>
+
+          <!-- Tombol buat ngebuka input BALASAN -->
           <ion-button fill="clear" size="small" slot="end" (click)="toggleReply(comment)">Balas</ion-button>
         </ion-item>
+
+        <!-- LIST balasan -->
         <div class="replies-section" *ngFor="let reply of comment.replies">
           <ion-item lines="none">
+
+            <!-- Icon panah indent -->
             <ion-icon name="return-down-forward-outline" slot="start" class="reply-icon"></ion-icon>
             <ion-label><h3>{{ reply.user }}</h3><p>{{ reply.text }}</p></ion-label>
           </ion-item>
         </div>
+
+        <!-- INPUT balasan muncul ketika tombol "Balas" ditekan -->
         <ion-item *ngIf="comment.showReply" class="reply-input">
           <ion-input placeholder="Tulis balasan..." [(ngModel)]="replyText"></ion-input>
           <ion-button size="small" slot="end" (click)="addReply(comment)">Kirim</ion-button>
@@ -86,10 +119,17 @@
 
   <!-- Style -->
   <style>
+    /* Ukuran slider */
     swiper-container { width: 100%; height: 250px; }
+
+    /* Pastikan gambar slide cover penuh */
     swiper-slide ion-img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Indent/garis kiri untuk balasan */
     .replies-section { padding-left: 20px; border-left: 2px solid #f0f0f0; margin-left: 20px; }
     .reply-icon { margin-right: 8px; }
+
+    /* Input balasan agak ke kanan */
     .reply-input { padding-left: 40px; }
   </style>
 </ion-content>

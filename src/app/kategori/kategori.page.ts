@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class KategoriPage implements OnInit {
 
-  // Add icon ionic untuk tiap kategori
+  // Daftar kategori berita untuk ditampilkan di halaman
+  // Setiap kategori punya id, nama, dan icon Ionicons
   categories = [
     { id: 'economy', name: 'Ekonomi', icon: 'cash-outline' },
     { id: 'sports', name: 'Olah Raga', icon: 'football-outline' },
@@ -22,6 +23,7 @@ export class KategoriPage implements OnInit {
 
   ngOnInit() { }
 
+  // Pindah ke halaman daftar berita berdasarkan kategori yang dipilih
   goToCategory(categoryId: string) {
     this.router.navigate(['/tabs/daftar-berita', categoryId]);
   }
