@@ -2,14 +2,14 @@
   <ion-toolbar color="primary">
 
     <ion-buttons slot="start">
-       <!-- Tombol BACK ke halaman home jika ditekan -->
+       <!-- Button back ke halaman home jika ditekan -->
       <ion-back-button defaultHref="/tabs/home"></ion-back-button>
     </ion-buttons>
 
     <ion-title>{{ berita ? berita.title : 'Baca Berita' }}</ion-title>
     <ion-buttons slot="end">
 
-      <!-- Tombol favorit -->
+      <!-- Button favorit -->
       <ion-button (click)="toggleFavorite()">
         <ion-icon 
           slot="icon-only" 

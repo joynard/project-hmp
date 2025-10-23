@@ -31,6 +31,12 @@
     <ion-list-header>
       <ion-label color="dark"><h2>Berita Utama</h2></ion-label>
     </ion-list-header>
+
+    <!-- Slider menggunakan Swiper:
+         - slidesPerView 1.2: tampil sedikit slide berikutnya
+         - centeredSlides: slide aktif di tengah
+         - loop & autoplay: putar otomatis dan berulang
+         Klik slide akan membuka halaman detail berita -->
     <swiper-container [slidesPerView]="1.2" [spaceBetween]="15" [centeredSlides]="true" [loop]="true" [autoplay]="true">
       <swiper-slide *ngFor="let berita of featuredNews" (click)="goToDetail(berita.id)">
         <div class="featured-card">
@@ -49,6 +55,7 @@
       <ion-label color="dark"><h2>Berita Terbaru</h2></ion-label>
     </ion-list-header>
     <ion-list class="ion-no-padding">
+      <!-- Loopingg latest news & click item diarahkan ke detail(navigate ke baca berita) -->
       <ion-item *ngFor="let berita of latestNews" (click)="goToDetail(berita.id)" button="true" lines="full">
         <ion-thumbnail slot="start">
           <ion-img [src]="berita.image"></ion-img>
@@ -61,6 +68,7 @@
     </ion-list>
   </div>
 
+  <!-- Style -->
   <style>
     .welcome-section h1 {
       font-size: 1.6rem;

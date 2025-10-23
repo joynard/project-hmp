@@ -7,17 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- Konten utama set fullscreen mengikuti layar user -->
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header collapse="condense"> <!-- Efek tiap kali user scrolling -->
     <ion-toolbar>
       <ion-title size="large">Berita: {{ kategoriId | titlecase }}</ion-title>
     </ion-toolbar>
   </ion-header>
   
+  <!-- Daftar berita *ngFor looping sesuai beritaList -->
   <ion-card *ngFor="let berita of beritaList" (click)="goToDetail(berita.id)" button="true">
     
     <ion-img [src]="berita.image" [alt]="berita.title"></ion-img>
-
+    
     <ion-card-header>
       <ion-card-title style="font-weight: bold;">{{ berita.title }}</ion-card-title>
       <ion-card-subtitle>
@@ -25,11 +27,13 @@
       </ion-card-subtitle>
     </ion-card-header>
 
+    <!-- Label -->
     <ion-card-content style="font-weight: bold;">
       Klik untuk membaca berita selengkapnya...
     </ion-card-content>
   </ion-card>
 
+  <!-- Hint saat tidak ada berita untuk kategori ini -->
   <div *ngIf="beritaList.length === 0" class="ion-text-center ion-padding">
     <p>Tidak ada berita untuk kategori ini.</p>
   </div>

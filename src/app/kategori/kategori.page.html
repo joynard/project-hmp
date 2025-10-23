@@ -10,12 +10,15 @@
 <ion-content class="ion-padding">
   <ion-grid>
     <ion-row class="ion-justify-content-center ion-text-center">
+      <!-- Click untuk looping berita sesuai kategori -->
       <ion-col size="6" size-md="3" *ngFor="let kategori of categories">
+        <!-- Click berita diarahkan ke baca-berita -->
         <ion-card button (click)="goToCategory(kategori.id)" style="
           border-radius: 15px;
           text-align: center;
           padding: 25px;
         ">
+        <!-- Icon bind dari kategori.icon -->
           <ion-icon [name]="kategori.icon" style="font-size: 35px; margin-bottom: 10px;"></ion-icon>
           <p style="margin: 0;">{{ kategori.name }}</p>
         </ion-card>
