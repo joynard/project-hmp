@@ -14,7 +14,7 @@ register();
   standalone: false,
 })
 export class HomePage {
-  currentUser: User | null = null; // Menyimpan info user yang sedang login
+  currentUser: User | null = null; // Menyimpan info user yang sedang login 
   featuredNews: Berita[] = []; // Array berita untuk tampilan slider/top news
   latestNews: Berita[] = []; // Array berita untuk list berita terbaru
 

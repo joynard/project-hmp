@@ -21,7 +21,7 @@
   </div>
 
   <!-- Daftar berita favorit:
-       - *ngFor loop setiap item di favoriteNews
+       - *ngFor loop setiap item di favoriteNews 
        - klik kartu memanggil goToDetail(berita.id) untuk membuka halaman detail -->
   <ion-card *ngFor="let berita of favoriteNews" (click)="goToDetail(berita.id)" button="true">
     <ion-img [src]="berita.image" class="favorite-card-image"></ion-img>
@@ -36,7 +36,7 @@
     .favorite-card-image {
       height: 200px; 
       width: 100%;
-      object-fit: cover; /* Biarkan gambar memenuhi area tanpa merusak rasio */
+      object-fit: cover;
     }
 
     .empty-state {

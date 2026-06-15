@@ -61,6 +61,18 @@ export class DaftarBeritaPage implements OnInit {
     return avg.toFixed(1);
   }
 
+  getAverageRatingNu(mmratingArr: { user: string; value: number }[]): number {
+    
+    // Jumlahkan semua rating seperti: r1 + r2 + r3 ...
+    const total = mmratingArr.reduce((sum, r) => sum + r.value, 0);
+
+    // Hitung rata-ratanya
+    const avg = total / mmratingArr.length;
+
+    // Bulatkan ke 1 angka belakang koma → misal 4.3
+    return avg;
+  }
+
   // Navigasi ke halaman detail berita
   goToDetail(id: string) {
     // Kirim ID berita ke halaman BacaBerita lewat state router
