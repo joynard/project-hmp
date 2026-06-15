@@ -1,4 +1,4 @@
-# News Portal - Mobile Application (Ionic & Angular)
+# News Portal - Hybrid Application (Ionic & Angular)
 
 A hybrid mobile news portal application built using Ionic Framework v8, Angular v20, and Capacitor v7. This application is designed to deliver a dynamic and interactive news reading experience with customizable global theme options.
 
